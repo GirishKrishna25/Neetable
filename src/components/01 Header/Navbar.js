@@ -1,6 +1,6 @@
 import React from "react";
 // import { BiToggleLeft } from "react-icons/bi";
-import { GrMenu } from "react-icons/gr";
+// import { GrMenu } from "react-icons/gr";
 import { BiCart } from "react-icons/bi";
 import { AiOutlineDown } from "react-icons/ai";
 
@@ -149,7 +149,7 @@ const Navbar = () => {
           </div> */}
           <div class="navbar-btn">
             <BiCart />
-            <a>Buy now</a>
+            <span>Buy now</span>
           </div>
         </div>
       </div>
