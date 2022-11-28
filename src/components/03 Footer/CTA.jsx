@@ -12,13 +12,13 @@ const cta = () => {
           <button>Subscribe</button>
         </form>
       </div>
-      <p className="credits">
+      <h6 className="credits">
         &#169; All rights reserved. Made with{" "}
         <span className="heart">
           <AiOutlineHeart />
         </span>{" "}
         by MadrasThemes
-      </p>
+      </h6>
     </section>
   );
 };
