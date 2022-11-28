@@ -32,7 +32,7 @@ svg {
   height: 16px;
   cursor: pointer;
 }
-.logobar a {
+.logobar button {
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 5px 20px;
@@ -42,7 +42,7 @@ svg {
   border-radius: 4px;
 }
 
-.logobar a:hover {
+.logobar button:hover {
   background-color: #82b440f1;
 }
 
