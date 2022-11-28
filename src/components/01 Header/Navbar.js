@@ -25,7 +25,10 @@ const Navbar = () => {
       <div className="navbar">
         <div className="logo-navgroup">
           <div className="logoContainer">
-            <img src="https://silicon.madrasthemes.com/wp-content/uploads/2022/01/logo.svg" />
+            <img
+              src="https://silicon.madrasthemes.com/wp-content/uploads/2022/01/logo.svg"
+              alt="logo"
+            />
             <span className="logo-name">Silicon</span>
           </div>
           <ul className="navgroup">

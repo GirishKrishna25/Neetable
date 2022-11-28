@@ -1,6 +1,5 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineMail } from "react-icons/ai";
 
 const cta = () => {
   return (
