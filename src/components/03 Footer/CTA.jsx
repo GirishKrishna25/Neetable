@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineUp } from "react-icons/ai";
 
 const cta = () => {
   return (
@@ -19,6 +20,12 @@ const cta = () => {
         </span>{" "}
         by MadrasThemes
       </h6>
+      <div className="footer-btn-container">
+        <span>Top</span>
+        <div className="footer-btn">
+          <AiOutlineUp />
+        </div>
+      </div>
     </section>
   );
 };
