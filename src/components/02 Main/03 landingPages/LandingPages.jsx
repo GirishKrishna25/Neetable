@@ -1,4 +1,5 @@
 import React from "react";
+import { useToggle } from "../../../toggleContext";
 import SingleLandingPage from "./SingleLandingPage";
 
 const LandingPages = () => {
@@ -14,11 +15,23 @@ const LandingPages = () => {
     ["Blog Homepage", "./images/landingPages/lp 09.jpg"],
   ];
 
+  const { isLightModeOn } = useToggle();
+  const styles = {
+    h1: {
+      color: isLightModeOn ? "#131022" : "#fff",
+    },
+    p: {
+      color: isLightModeOn ? "#131022" : "#fff",
+    },
+  };
+
   return (
     <section className="landingPagesContainer">
-      <header className="landingPages-header">
+      <header className="landingPages-header" style={styles.h1}>
         <h1>Landing Pages</h1>
-        <p>Choose from pre-built layouts of our unique landing pages</p>
+        <p style={styles.p}>
+          Choose from pre-built layouts of our unique landing pages
+        </p>
       </header>
       <div className="landingPages-group">
         {landingPages.map((landingPage, index) => {

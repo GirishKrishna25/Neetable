@@ -1,26 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiCart } from "react-icons/bi";
 import { AiOutlineDown } from "react-icons/ai";
+import { MdToggleOff } from "react-icons/md"; // light
+import { MdToggleOn } from "react-icons/md"; // dark
+import { useToggle } from "../../toggleContext";
 
 const Navbar = () => {
-  const [landingsHover, setLandingsHover] = React.useState(false);
+  const [landingsHover, setLandingsHover] = useState(false);
+  const [pagesHover, setPagesHover] = useState(false);
+  const [portfolioHover, setPortfolioHover] = useState(false);
+
   const landingsHoverHandler = () => {
-    setLandingsHover(!landingsHover);
+    setPagesHover(false);
+    setPortfolioHover(false);
+
+    setLandingsHover(true);
   };
 
-  const [pagesHover, setPagesHover] = React.useState(false);
   const pagesHoverHandler = () => {
-    setPagesHover(!pagesHover);
+    setLandingsHover(false);
+    setPortfolioHover(false);
+
+    setPagesHover(true);
   };
 
-  const [portfolioHover, setPortfolioHover] = React.useState(false);
   const portfolioHoverHandler = () => {
-    setPortfolioHover(!portfolioHover);
+    setLandingsHover(false);
+    setPagesHover(false);
+
+    setPortfolioHover(true);
+  };
+
+  const { isLightModeOn, toggleHandler } = useToggle();
+  const styles = {
+    body: {
+      "background-color": isLightModeOn ? "#fff" : "#131022",
+      color: isLightModeOn ? "#131022" : "#fff",
+    },
+    span: {
+      color: isLightModeOn ? "#131022" : "#fff",
+    },
+    "landingPages-list": {
+      "background-color": isLightModeOn ? "#fff" : "#131022",
+      color: isLightModeOn ? "#131022" : "#fff",
+    },
+    icon: {
+      color: isLightModeOn ? "#131022" : "#fff",
+    },
   };
 
   return (
     <>
-      <div className="navbar">
+      <div className="navbar" style={styles.body}>
         <div className="logo-navgroup">
           <div className="logoContainer">
             <img
@@ -29,17 +60,31 @@ const Navbar = () => {
             />
             <span className="logo-name">Silicon</span>
           </div>
-          <ul className="navgroup">
+          <ul
+            className="navgroup"
+            onMouseLeave={() => {
+              setLandingsHover(false);
+              setPagesHover(false);
+              setPortfolioHover(false);
+            }}
+            style={styles.body}
+          >
             <li onMouseEnter={landingsHoverHandler}>
               <abbr title="Landings">Landings</abbr>
-              <AiOutlineDown />
+              <AiOutlineDown style={styles.icon} />
             </li>
             {landingsHover && (
-              <div className="modal" onMouseLeave={landingsHoverHandler}>
+              <div
+                className="modal"
+                onMouseLeave={() => setLandingsHover(false)}
+              >
                 <div className="modal-img">
                   <img src="./images/preview.jpg" alt="preview" />
                 </div>
-                <div className="landingPages-list">
+                <div
+                  className="landingPages-list"
+                  style={styles["landingPages-list"]}
+                >
                   <ul className="list">
                     <li>Template Intro Page</li>
                     <li>Mobile App Showcase</li>
@@ -65,12 +110,13 @@ const Navbar = () => {
 
             <li onMouseEnter={pagesHoverHandler}>
               <abbr title="Pages">Pages</abbr>
-              <AiOutlineDown />
+              <AiOutlineDown style={styles.icon} />
             </li>
             {pagesHover && (
               <div
                 className="modal modal-pages"
-                onMouseLeave={pagesHoverHandler}
+                onMouseLeave={() => setPagesHover(false)}
+                style={styles["landingPages-list"]}
               >
                 <div className="pages-list">
                   <h3>About</h3>
@@ -108,12 +154,13 @@ const Navbar = () => {
 
             <li onMouseEnter={portfolioHoverHandler}>
               <abbr title="Portfolio">Portfolio</abbr>
-              <AiOutlineDown />
+              <AiOutlineDown style={styles.icon} />
             </li>
             {portfolioHover && (
               <div
                 className="modal modal-portfolio"
-                onMouseLeave={portfolioHoverHandler}
+                onMouseLeave={() => setPortfolioHover(false)}
+                style={styles["landingPages-list"]}
               >
                 <div className="portfolio-list">
                   <li>Grid View</li>
@@ -125,7 +172,16 @@ const Navbar = () => {
             )}
 
             <li>
-              <abbr title="Support">Support</abbr>
+              <abbr
+                title="Support"
+                onMouseEnter={() => {
+                  setLandingsHover(false);
+                  setPagesHover(false);
+                  setPortfolioHover(false);
+                }}
+              >
+                Support
+              </abbr>
             </li>
             <li>
               <abbr title="Docs">Docs</abbr>
@@ -135,11 +191,17 @@ const Navbar = () => {
 
         <div className="theme-menu">
           <div className="themeContainer">
-            <span style={{ color: "#131022" }}>Light</span>
-            <div className="toggle">
-              <div className="toggle-circle"></div>
+            <span style={styles.span}>Light</span>
+
+            <div
+              // className="light"
+              onClick={toggleHandler}
+              className={`${isLightModeOn ? "dark" : "light"}`}
+            >
+              {isLightModeOn ? <MdToggleOff /> : <MdToggleOn />}
             </div>
-            <span style={{ color: "#585c7b" }}>Dark</span>
+
+            <span style={styles.span}>Dark</span>
           </div>
           <div class="navbar-btn">
             <BiCart />
