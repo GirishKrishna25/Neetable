@@ -4,20 +4,6 @@ import { AiOutlineUp } from "react-icons/ai";
 import { useToggle } from "../../toggleContext";
 
 const CTA = () => {
-  let mybutton = document.getElementsByClassName("footer-btn-container");
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function () {
-    scrollFunction();
-  };
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      mybutton.style.color = "red";
-    }
-  }
-
   // When the user clicks on the button, scroll to the top of the document
   const topFunction = () => {
     window.scroll = "smooth";
@@ -29,6 +15,7 @@ const CTA = () => {
   const styles = {
     email: {
       "background-color": isLightModeOn ? "#fff" : "#131022",
+      color: isLightModeOn ? "#131022" : "#fff",
     },
     "footer-container": {
       "border-top": "1px solid rgba(255, 255, 255, 0.1)",

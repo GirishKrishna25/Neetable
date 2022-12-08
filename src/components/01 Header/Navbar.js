@@ -194,7 +194,6 @@ const Navbar = () => {
             <span style={styles.span}>Light</span>
 
             <div
-              // className="light"
               onClick={toggleHandler}
               className={`${isLightModeOn ? "dark" : "light"}`}
             >

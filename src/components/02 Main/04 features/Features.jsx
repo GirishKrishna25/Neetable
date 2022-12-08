@@ -19,10 +19,6 @@ const Features = () => {
     h3: {
       color: isLightModeOn ? "#131022" : "#fff",
     },
-    "features-icon": {
-      // "background-color": isLightModeOn ? "#fff" : "#7A7A7A",
-      // "background-color": "#7A7A7A",
-    },
   };
 
   return (
